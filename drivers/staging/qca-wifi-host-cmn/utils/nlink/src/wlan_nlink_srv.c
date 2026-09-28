@@ -23,6 +23,8 @@
 *
 ******************************************************************************/
 
+#define nl80211hdr_put qcacld_local_nl80211hdr_put
+
 #include <linux/version.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -342,7 +344,7 @@ int nl_srv_unregister(tWlanNlModTypes msg_type, nl_srv_msg_callback msg_handler)
 	return 0;
 }
 
-static void *nl80211hdr_put(struct sk_buff *skb, uint32_t portid,
+void *nl80211hdr_put(struct sk_buff *skb, uint32_t portid,
 		     uint32_t seq, int flags, uint8_t cmd)
 {
 	struct genl_family *cld80211_fam = cld80211_get_genl_family();
