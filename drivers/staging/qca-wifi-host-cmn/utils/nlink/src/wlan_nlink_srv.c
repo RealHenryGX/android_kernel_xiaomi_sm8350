@@ -37,11 +37,12 @@
 
 #define WLAN_CLD80211_MAX_SIZE (SKB_WITH_OVERHEAD(8192UL) - NLMSG_HDRLEN)
 
+#define nl80211hdr_put qcacld_local_nl80211hdr_put
+
 #if defined(CONFIG_CNSS_LOGGER)
 
 #include <net/cnss_logger.h>
 
-#define nl80211hdr_put qcacld_local_nl80211hdr_put
 
 static int radio_idx = -EINVAL;
 static void *wiphy_ptr;
