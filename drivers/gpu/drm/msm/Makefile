@@ -4,19 +4,6 @@ ccflags-y += -I $(srctree)/$(src)/disp/dpu1
 ccflags-$(CONFIG_DRM_MSM_DSI) += -I $(srctree)/$(src)/dsi
 
 msm-y := \
-ifneq ($(CONFIG_QCOM_KGSL),y)
-	adreno/adreno_device.o \
-	adreno/adreno_gpu.o \
-	adreno/a2xx_gpu.o \
-	adreno/a3xx_gpu.o \
-	adreno/a4xx_gpu.o \
-	adreno/a5xx_gpu.o \
-	adreno/a5xx_power.o \
-	adreno/a5xx_preempt.o \
-	adreno/a6xx_gpu.o \
-	adreno/a6xx_gmu.o \
-	adreno/a6xx_hfi.o \
-endif
 	hdmi/hdmi.o \
 	hdmi/hdmi_audio.o \
 	hdmi/hdmi_bridge.o \
@@ -95,6 +82,21 @@ endif
 	msm_submitqueue.o \
 	msm_gpu_tracepoints.o \
 	msm_gpummu.o
+
+ifneq ($(CONFIG_QCOM_KGSL),y)
+msm-y += \
+	adreno/adreno_device.o \
+	adreno/adreno_gpu.o \
+	adreno/a2xx_gpu.o \
+	adreno/a3xx_gpu.o \
+	adreno/a4xx_gpu.o \
+	adreno/a5xx_gpu.o \
+	adreno/a5xx_power.o \
+	adreno/a5xx_preempt.o \
+	adreno/a6xx_gpu.o \
+	adreno/a6xx_gmu.o \
+	adreno/a6xx_hfi.o
+endif
 
 msm-$(CONFIG_DEBUG_FS) += adreno/a5xx_debugfs.o
 
