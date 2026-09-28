@@ -26,6 +26,8 @@
 #include "wlan_ipa_ucfg_api.h"
 #include "qdf_platform.h"
 
+#define ipa_is_ready qcacld_local_ipa_is_ready
+
 static bool g_ipa_is_ready;
 static qdf_mutex_t g_init_deinit_lock;
 bool ipa_is_ready(void)
